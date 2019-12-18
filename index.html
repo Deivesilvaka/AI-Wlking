@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My AI</title>
+
+    <style>
+      canvas{
+        position:absolute;
+        margin:auto;
+        top:0px;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        background-color:#FFFFFF;
+        width:900px;
+        height:590px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <canvas id="canvas" width="900" height="590"></canvas>
+
+    <script src="char.js"></script>
+
+    <script>
+
+      const cnv = document.querySelector("#canvas")
+      const ctx = cnv.getContext("2d")
+
+      const img = new Image()
+      img.src = "character.png"
+
+      const Jeferson = new Individuo(img)
+
+      function loop() {
+        requestAnimationFrame(loop, cnv)
+        update()
+        draw()
+      }
+
+      function update() {
+        Jeferson.update()
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, cnv.width, cnv.height)
+        Jeferson.draw()
+      }
+
+      loop()
+
+    </script>
+
+  </body>
+</html>
